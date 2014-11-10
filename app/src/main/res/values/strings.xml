@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TrafficMonitor</string>
+    <string name="app_description">An app used to monitor network traffic</string>
+    <string name="tarffic_monitor_title">流量管理</string>
+    <string name="setting_title">设置</string>
+    <string name="traffic_monitor_text">流量监控</string>
+    <string name="month_plan_text">包月流量</string>
+    <string name="month_plan_editor_pointer">◢</string>
+    <string name="month_plan_limit_text">月流量限额</string>
+    <string name="app_detail_title">应用流量信息</string>
+    <string name="app_detail_tips">显示开机以来应用流量信息</string>
+    <string name="loading">正在加载中</string>
+</resources>
