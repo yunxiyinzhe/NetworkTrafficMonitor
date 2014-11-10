@@ -12,7 +12,7 @@ import android.util.Log;
 
 import com.dylangao.networktrafficmonitor.database.TrafficDataUtils;
 import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
-import static com.dylangao.networktrafficmonitor.database.DataBaseString.*;
+import static com.dylangao.networktrafficmonitor.database.DataBaseConstants.*;
 
 public class MonitorService extends Service {
 	private static final int delay = 5000;

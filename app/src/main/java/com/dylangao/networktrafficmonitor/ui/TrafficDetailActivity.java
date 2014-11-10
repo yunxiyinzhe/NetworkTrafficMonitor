@@ -49,6 +49,10 @@ public class TrafficDetailActivity extends FragmentActivity {
         } else {
             Log.v("MainActivity", "MonitorService is already running");
         }
+
+        setUpComponents();
+        hasSetMonthPlan();
+        showContents();
     }
 
     private boolean isServiceRunning() {
@@ -61,6 +65,18 @@ public class TrafficDetailActivity extends FragmentActivity {
             }
         }
         return false;
+    }
+
+    private void setUpComponents() {
+
+    }
+
+    private void hasSetMonthPlan() {
+
+    }
+
+    private void showContents() {
+
     }
 
 }

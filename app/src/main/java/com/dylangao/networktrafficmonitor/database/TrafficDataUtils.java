@@ -7,7 +7,7 @@ import android.net.TrafficStats;
 import android.net.Uri;
 import android.util.Log;
 
-import static com.dylangao.networktrafficmonitor.database.DataBaseString.*;
+import static com.dylangao.networktrafficmonitor.database.DataBaseConstants.*;
 
 public class TrafficDataUtils {
     private String mType;

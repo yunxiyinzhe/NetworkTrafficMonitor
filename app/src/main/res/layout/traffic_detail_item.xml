@@ -14,16 +14,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="  \n无线网络：\n  "
-            android:id="@+id/textView2"
+            android:id="@+id/detail_title"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:textSize="18sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="  \n100MB\n  "
-            android:id="@+id/textView5"
+            android:id="@+id/detail_bytes"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:textSize="18sp"/>
@@ -32,18 +30,17 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical">
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/detail_up_bytes"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:layout_marginEnd="10dp"
-                android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:maxLines="1"
-                android:textColor="@color/text"
-                android:text="上传: 50MB"/>
+                android:textColor="@color/text"/>
 
             <View
                 android:layout_width="match_parent"
@@ -53,7 +50,7 @@
                 android:background="@color/dividers"/>
 
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/detail_down_bytes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -64,8 +61,7 @@
                 android:layout_marginRight="8dp"
                 android:textSize="18sp"
                 android:maxLines="1"
-                android:textColor="@color/text"
-                android:text="下载: 50MB">
+                android:textColor="@color/text">
             </TextView>
         </LinearLayout>
     </LinearLayout>

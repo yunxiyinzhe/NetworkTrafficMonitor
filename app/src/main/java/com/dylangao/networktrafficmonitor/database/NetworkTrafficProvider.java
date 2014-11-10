@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 
-import static com.dylangao.networktrafficmonitor.database.DataBaseString.*;
+import static com.dylangao.networktrafficmonitor.database.DataBaseConstants.*;
 
 public class NetworkTrafficProvider extends ContentProvider {
     DatabaseHelper mpDBHelper;

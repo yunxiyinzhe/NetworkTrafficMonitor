@@ -2,7 +2,7 @@ package com.dylangao.networktrafficmonitor.database;
 
 import android.net.Uri;
 
-public class DataBaseString {
+public class DataBaseConstants {
     public static final String DB_FILE_NAME = "networktraffic.db";
     public static final String AUTOHORITY = "com.dylan.networktraffic";
     public static final String NETWORK_TRAFFIC_CONFIG_TABLE_NAME = "network_traffic_config";

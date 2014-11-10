@@ -1,5 +1,6 @@
 package com.dylangao.networktrafficmonitor.ui;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -18,13 +19,16 @@ public class TrafficDetailPagerAdapter extends FragmentPagerAdapter implements T
 
     @Override
     public Fragment getItem(int position) {
+        Fragment tab = TrafficDetailFragment.newInstance(R.layout.traffic_detail_tab_layout);
+        Bundle args = new Bundle();
         if (position == 0) {
-            return TrafficDetailFragment.newInstance(R.layout.traffic_detail_tab_layout);
+            args.putInt(UIConstants.TAB_TYPE,UIConstants.MONTH_TYPE);
         }
         if (position == 1) {
-            return TrafficDetailFragment.newInstance(R.layout.traffic_detail_tab_layout);
+            args.putInt(UIConstants.TAB_TYPE,UIConstants.DAY_TYPE);
         }
-        return null;
+        tab.setArguments(args);
+        return tab;
     }
 
     @Override

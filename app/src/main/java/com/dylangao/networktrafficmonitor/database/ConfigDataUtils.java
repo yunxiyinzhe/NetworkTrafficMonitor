@@ -6,7 +6,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import static com.dylangao.networktrafficmonitor.database.DataBaseString.*;
+import static com.dylangao.networktrafficmonitor.database.DataBaseConstants.*;
 
 public class ConfigDataUtils {
     public static void setNetworkTrafficConfig(String key, String value,
