@@ -1,5 +1,6 @@
 package com.dylangao.networktrafficmonitor.ui;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -8,10 +9,14 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.dylangao.networktrafficmonitor.R;
+import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
 import com.dylangao.networktrafficmonitor.service.MonitorService;
 import com.material.widget.TabIndicator;
 import android.util.Log;
+import android.widget.Toast;
 
 public class TrafficDetailActivity extends FragmentActivity {
 
@@ -49,10 +54,7 @@ public class TrafficDetailActivity extends FragmentActivity {
         } else {
             Log.v("MainActivity", "MonitorService is already running");
         }
-
-        setUpComponents();
         hasSetMonthPlan();
-        showContents();
     }
 
     private boolean isServiceRunning() {
@@ -67,16 +69,32 @@ public class TrafficDetailActivity extends FragmentActivity {
         return false;
     }
 
-    private void setUpComponents() {
-
-    }
 
     private void hasSetMonthPlan() {
+        ContentResolver cr = getContentResolver();
+        if(ConfigDataUtils.getMonthlyPlanBytes(cr).equals("0")) {
+            showMonthlyPlanSetDlg();
+        }
 
     }
 
-    private void showContents() {
+    private void showMonthlyPlanSetDlg() {
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title(R.string.monthly_plan_setting_title)
+                .customView(R.layout.monthly_plan_dialog)
+                .positiveText(android.R.string.ok)
+                .negativeText(android.R.string.cancel)
+                .callback(new MaterialDialog.Callback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
 
+                    }
+
+                    @Override
+                    public void onNegative(MaterialDialog dialog) {
+                    }
+                }).build();
+        dialog.show();
     }
 
 }
