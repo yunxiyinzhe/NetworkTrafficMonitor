@@ -22,11 +22,14 @@ repositories {
     flatDir {
         dirs'libs'
     }
+    mavenCentral()
 }
 dependencies {
     compile(name: 'MaterialWidgetLibrary', ext: 'aar')
+    compile project(':MaterialTabsModule')
     compile 'com.android.support:support-v4:21.+'
     compile 'com.android.support:cardview-v7:21.+'
     compile 'com.android.support:appcompat-v7:21.+'
     compile 'com.afollestad:material-dialogs:0.0.2'
+    compile 'com.github.markushi:android-ui:1.2'
 }
