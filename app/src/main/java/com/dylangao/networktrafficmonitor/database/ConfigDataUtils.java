@@ -48,8 +48,9 @@ public class ConfigDataUtils {
     }
 
     public static String getLastRecordTime(ContentResolver cr) {
-        return getNetworkTrafficConfig(NETWORK_TRAFFIC_LAST_RECORD_TIME,
+        String result =  getNetworkTrafficConfig(NETWORK_TRAFFIC_LAST_RECORD_TIME,
                 NETWORK_TRAFFIC_LAST_RECORD_TIME_ID, cr);
+        return result.equals("") ? "0" : result;
     }
 
     public static void setLimitBytesForDay(int limit, ContentResolver cr) {
@@ -60,9 +61,10 @@ public class ConfigDataUtils {
     }
 
     public static String getLimitBytesForDay(ContentResolver cr) {
-        return getNetworkTrafficConfig(
+        String result = getNetworkTrafficConfig(
                 NETWORK_TRAFFIC_LIMIT_BYTES_FOR_DAY,
                 NETWORK_TRAFFIC_LIMIT_BYTES_FOR_DAY_ID, cr);
+        return result.equals("") ? "0" : result;
     }
 
     public static void setMonthlyPlanMBytes(int mbytes, ContentResolver cr) {
@@ -73,9 +75,10 @@ public class ConfigDataUtils {
     }
 
     public static String getMonthlyPlanBytes(ContentResolver cr) {
-        return getNetworkTrafficConfig(
+        String result = getNetworkTrafficConfig(
                 NETWORK_TRAFFIC_MONTHLY_PLAN_MBYTES,
                 NETWORK_TRAFFIC_MONTHLY_PLAN_MBYTES_ID, cr);
+        return result.equals("") ? "0" : result;
     }
 
     public static String getDateOfToday() {

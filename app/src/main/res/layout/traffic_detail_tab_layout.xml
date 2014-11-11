@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:gravity="center"
               android:layout_width="match_parent"
@@ -26,11 +27,15 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:textSize="15sp" />
-        <com.material.widget.LinearProgress
-            android:id="@+id/bytes_limit_linearprogress"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginRight="10dp" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bytes_limit_progressBar"
+            android:indeterminate="false"
+            android:layout_marginRight="15sp" />
+
     </LinearLayout>
 
     <View
@@ -40,7 +45,7 @@
         android:layout_margin="10dp"/>
 
     <include
-        android:id="@+id/wifi_detail_card"
+        android:id="@+id/moblie_detail_card"
         layout="@layout/traffic_detail_item"/>
     <View
         android:layout_width="match_parent"
@@ -48,7 +53,7 @@
         android:background="@color/dividers"
         android:layout_margin="10dp"/>
     <include
-        android:id="@+id/moblie_detail_card"
+        android:id="@+id/wifi_detail_card"
         layout="@layout/traffic_detail_item"/>
     <View
         android:layout_width="match_parent"

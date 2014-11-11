@@ -12,17 +12,14 @@ import static com.dylangao.networktrafficmonitor.database.DataBaseConstants.*;
 public class TrafficDataUtils {
     private String mType;
     private int mComputingCycle;
-    private boolean isFromBoot;
     private ContentResolver mContentResolver;
     private long initialMobileTrafficBytes;
     private long initialTotalTrafficBytes;
 
-    public TrafficDataUtils(String type, int computingCycle, ContentResolver cr, boolean flag) {
+    public TrafficDataUtils(String type, int computingCycle, ContentResolver cr) {
         mType = type;
         mComputingCycle = computingCycle;
         mContentResolver = cr;
-        isFromBoot = flag;
-        initialTrafficBytes();
     }
 
     public String getType() {
@@ -33,7 +30,7 @@ public class TrafficDataUtils {
         return mComputingCycle;
     }
 
-    public void initialTrafficBytes() {
+    public void initialTrafficBytes(boolean isFromBoot) {
         if (isFromBoot) {
             initialMobileTrafficBytes = getTrafficData(COLUMNS_MOBILE, mContentResolver);
 

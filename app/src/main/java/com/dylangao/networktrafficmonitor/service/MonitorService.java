@@ -83,14 +83,17 @@ public class MonitorService extends Service {
 		Log.v("MonitorService", "MonitorService isFromBoot " + isFromBoot);	
 		cr = getContentResolver();
 		dailyTrafficBytesUpload = new TrafficDataUtils(
-				NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_DAY, cr, isFromBoot);
+				NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_DAY, cr);
+        dailyTrafficBytesUpload.initialTrafficBytes(isFromBoot);
 		dailyTrafficBytesDownload = new TrafficDataUtils(
-				NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_DAY, cr, isFromBoot);
+				NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_DAY, cr);
+        dailyTrafficBytesDownload.initialTrafficBytes(isFromBoot);
 		monthlyTrafficBytesUpload = new TrafficDataUtils(
-				NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr, isFromBoot);
+				NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
+        dailyTrafficBytesDownload.initialTrafficBytes(isFromBoot);
 		monthlyTrafficBytesDownload = new TrafficDataUtils(
-				NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr, isFromBoot);
-
+				NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
+        monthlyTrafficBytesDownload.initialTrafficBytes(isFromBoot);
 		handler.sendEmptyMessage(STARTMONITOR);
 		checkNetworkTrafficLimits();
 		return super.onStartCommand(intent, flags, startId);
@@ -115,8 +118,7 @@ public class MonitorService extends Service {
 	}
 
 	private boolean isNewDay() {
-		int lastRecordTime = Integer.parseInt(ConfigDataUtils.getLastRecordTime(
-				cr).equals("") ? "0" : ConfigDataUtils.getLastRecordTime(cr));
+		int lastRecordTime = Integer.parseInt(ConfigDataUtils.getLastRecordTime(cr));
 		int dateOfToday = Integer.parseInt(ConfigDataUtils.getDateOfToday());
 		Log.v("MonitorService", "lastRecordTime is " + lastRecordTime
 				+ " dateOfToday is " + dateOfToday);
@@ -128,7 +130,7 @@ public class MonitorService extends Service {
 
 	private boolean isNewMonth() {
 		int lastRecordMonth = Integer.parseInt(ConfigDataUtils
-				.getLastRecordTime(cr).equals("") ? "0" : ConfigDataUtils
+				.getLastRecordTime(cr).equals("0") ? "0" : ConfigDataUtils
 				.getLastRecordTime(cr).substring(0, 6));
 		int monthOfToday = Integer.parseInt(ConfigDataUtils.getDateOfToday()
 				.substring(0, 6));
@@ -142,10 +144,8 @@ public class MonitorService extends Service {
 
 
 	private void checkNetworkTrafficLimits() {
-		long limitBytesForDay = Long.parseLong(ConfigDataUtils.getLimitBytesForDay(cr).
-                equals("") ? "0" : ConfigDataUtils.getLimitBytesForDay(cr));
-		long monthlyPlanBytes = Long.parseLong(ConfigDataUtils.getMonthlyPlanBytes(cr).
-                equals("") ? "0" : ConfigDataUtils.getMonthlyPlanBytes(cr));
+		long limitBytesForDay = Long.parseLong(ConfigDataUtils.getLimitBytesForDay(cr));
+		long monthlyPlanBytes = Long.parseLong(ConfigDataUtils.getMonthlyPlanBytes(cr));
 		
 		long dayBytes = dailyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE, cr) +
 				dailyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE, cr);
