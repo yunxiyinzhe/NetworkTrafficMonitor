@@ -6,7 +6,6 @@
     <string name="setting_title">设置</string>
     <string name="traffic_monitor_text">流量监控</string>
     <string name="month_plan_text">包月流量</string>
-    <string name="month_plan_editor_pointer">◢</string>
     <string name="month_plan_limit_text">月流量限额</string>
     <string name="app_detail_title">应用流量信息</string>
     <string name="app_detail_tips">显示开机以来应用流量信息</string>
