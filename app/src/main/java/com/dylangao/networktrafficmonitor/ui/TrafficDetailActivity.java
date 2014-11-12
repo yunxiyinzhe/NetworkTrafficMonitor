@@ -116,7 +116,7 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
         Log.v("MainActivity", "MonitorService class name is " + MonitorService.class.getName());
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
             Log.v("MainActivity", "Service name is " + service.service.getClassName());
-            if ("com.dylangao.networktrafficmonitor.MonitorService".equals(service.service.getClassName())) {
+            if ("com.dylangao.networktrafficmonitor.service.MonitorService".equals(service.service.getClassName())) {
                 return true;
             }
         }
