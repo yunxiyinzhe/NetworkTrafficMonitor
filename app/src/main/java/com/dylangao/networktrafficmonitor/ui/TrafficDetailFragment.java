@@ -74,6 +74,23 @@ public class TrafficDetailFragment extends Fragment {
                 if(ConfigDataUtils.getMonthlyPlanBytes(cr).equals("0")) {
                     bytesLimitDetail.setText("0/0(MB)");
                     bytesLimitProgressBar.setProgress(0);
+                } else {
+                    int used = (int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) +
+                            (int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
+                    int planed = Integer.valueOf(ConfigDataUtils.getMonthlyPlanBytes(cr));
+                    bytesLimitDetail.setText(used + "/" + planed +"(MB)");
+                    bytesLimitProgressBar.setProgress(used*100/planed);
+
+                    moblieDetailTotalBytes.setText(used + "MB");
+                    moblieDetailUpBytes.setText((int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
+                    moblieDetailDownBytes.setText((int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
+
+                    wifiDetailTotalBytes.setText((int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024) +
+                            (int)monthlyTrafficBytesDownload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024 - used + "MB");
+                    wifiDetailUpBytes.setText((int)monthlyTrafficBytesUpload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024 -
+                            (int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
+                    wifiDetailDownBytes.setText((int)monthlyTrafficBytesDownload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024 -
+                            (int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
                 }
                 break;
             case UIConstants.DAY_TYPE:
@@ -81,6 +98,23 @@ public class TrafficDetailFragment extends Fragment {
                 if(ConfigDataUtils.getLimitBytesForDay(cr).equals("0")) {
                     bytesLimitDetail.setText("0/0(MB)");
                     bytesLimitProgressBar.setProgress(0);
+                } else {
+                    int used = (int)(dailyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) +
+                            (int)(dailyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
+                    int planed = (Integer.valueOf(ConfigDataUtils.getMonthlyPlanBytes(cr)))/30;
+                    bytesLimitDetail.setText(used + "/" + planed +"(MB)");
+                    bytesLimitProgressBar.setProgress(used*100/planed);
+
+                    moblieDetailTotalBytes.setText(used + "MB");
+                    moblieDetailUpBytes.setText((int)(dailyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
+                    moblieDetailDownBytes.setText((int)(dailyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
+
+                    wifiDetailTotalBytes.setText((int)(dailyTrafficBytesUpload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024) +
+                            (int)dailyTrafficBytesDownload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024 - used + "MB");
+                    wifiDetailUpBytes.setText((int)dailyTrafficBytesUpload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024 -
+                            (int)(dailyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
+                    wifiDetailDownBytes.setText((int)dailyTrafficBytesDownload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024 -
+                            (int)(dailyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
                 }
                 break;
             default:

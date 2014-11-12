@@ -2,6 +2,7 @@ package com.dylangao.networktrafficmonitor.ui;
 
 
 import android.app.ActivityManager;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,8 +13,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.dylangao.networktrafficmonitor.R;
+import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
 import com.dylangao.networktrafficmonitor.service.MonitorService;
 
 import it.neokree.materialtabs.MaterialTab;
@@ -78,8 +82,34 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
         } else {
             Log.v("MainActivity", "MonitorService is already running");
         }
+        hasSetMonthlyPlan();
 		
 	}
+
+    private void hasSetMonthlyPlan() {
+        ContentResolver cr = getContentResolver();
+        if(ConfigDataUtils.getMonthlyPlanBytes(cr).equals("0")) {
+            new MaterialDialog.Builder(this)
+                    .content(R.string.monthly_plan_setting_tips)
+                    .positiveText(android.R.string.ok)  // the default is 'Accept', this line could be left out
+                    .negativeText(android.R.string.cancel)  // leaving this line out will remove the negative button
+                    .callback(new MaterialDialog.Callback() {
+                        @Override
+                        public void onPositive(MaterialDialog dialog) {
+                            Intent intent = new Intent();
+                            intent.setClass(TrafficDetailActivity.this, TrafficSettingActivity.class);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onNegative(MaterialDialog dialog) {
+
+                        }
+                    })
+                    .build()
+                    .show();
+        }
+    }
 
     private boolean isServiceRunning() {
         ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
