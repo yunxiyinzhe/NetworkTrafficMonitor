@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
+import com.gc.materialdesign.views.ProgressBarDetermininate;
 import com.dylangao.networktrafficmonitor.R;
 import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
 import com.dylangao.networktrafficmonitor.database.TrafficDataUtils;
@@ -36,7 +36,7 @@ public class TrafficDetailFragment extends Fragment {
         View tab = inflater.inflate(mResourceId, container, false);
         TextView bytesLimitTitleView = (TextView)tab.findViewById(R.id.bytes_limit_title);
         TextView bytesLimitDetail = (TextView)tab.findViewById(R.id.bytes_limit_detail);
-        ProgressBar bytesLimitProgressBar = (ProgressBar)tab.findViewById(R.id.bytes_limit_progressBar);
+        ProgressBarDetermininate bytesLimitProgressBar = (ProgressBarDetermininate)tab.findViewById(R.id.bytes_limit_progressBar);
         bytesLimitProgressBar.setMax(100);
 
         TextView moblieDetailTitle = (TextView)tab.findViewById(R.id.moblie_detail_card).findViewById(R.id.detail_title);

@@ -1,65 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\classes-dc9b1c3b192cf94f0e6900cce80d5795f3f82e5f.jar"
-        jar="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
+        jar="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6"/>
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-b72cbcaa5388a4d051ddaad722fc722274892f64.jar" />
+    </item>
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\nineoldandroids-2.4.0-19f1d45994d56f9579aac63f81854391a9171c2a.jar"
-        jar="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\exploded-aar\MaterialWidgetLibrary\libs\nineoldandroids-2.4.0.jar"
+        jar="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/exploded-aar/NetworkTrafficMonitor/MaterialDesign/unspecified/classes.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="59f19e43354d32de831379c23ce03bb259a4c2b7"/>
+        sha1="b2fd7540a210a45b6b0aaa9dd5369bcb3feaa09c">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/classes-3b9a044dd225afbb28a8e946e14c23a8141893ec.jar" />
+    </item>
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\classes-d6288f90d52ea50b568466de2a0642e0c1e2c7cd.jar"
-        jar="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\exploded-aar\com.afollestad\material-dialogs\0.0.2\classes.jar"
+        jar="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.0/classes.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="3c0123ebce0628f443315f04acd2c4f0cf70fbb6"/>
+        sha1="7d2525cba8ed61fff102977caed964fc22061e34">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/classes-d25d8843c813c754742526d886636410ecf83f86.jar" />
+    </item>
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\classes-bb9dba9d52fe2503a3588ffd777a1fa3641cdde8.jar"
-        jar="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.0\classes.jar"
+        jar="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/exploded-aar/NetworkTrafficMonitor/MaterialTabsModule/unspecified/classes.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="7d2525cba8ed61fff102977caed964fc22061e34"/>
+        sha1="a48dcbd875c9cf46ae74f1d963322f85cd5c7bdb">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/classes-67f1d6a5da40655c4d310b465f631885e1c0f8ad.jar" />
+    </item>
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-5a5e74ee8bad30035a2d26d31a6f9f20442295ab.jar"
-        jar="D:\Program Files\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
+        jar="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/exploded-aar/com.github.markushi/android-ui/1.2/classes.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e"/>
+        sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/classes-c6cc578a389e94a1ad2ad7c8abab8ccf824e3092.jar" />
+    </item>
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\classes-bf8f25d9a2fb2a386484e4a3e10b27a2b0928ebe.jar"
-        jar="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.0\classes.jar"
+        jar="/home/dylangao/WorkSpace/android-studio/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="95fd37732ec852e99f07eeb516a3650172f1d136"/>
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-ca4d51d31a8a0dd0520790a618811af3ed597328.jar" />
+    </item>
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\classes-2623d7b294add65c1079ae5b2e937f074d9637d6.jar"
-        jar="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\exploded-aar\NetworkTrafficMonitor\MaterialTabsModule\unspecified\classes.jar"
+        jar="/home/dylangao/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="6992db2ca18bf0319ea108c6c268038c63bbf537"/>
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/library-2.4.0-d70832631730b0b6f47d6a95cd87a5a730b827e5.jar" />
+    </item>
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\classes-10d8b16d9ead9c9d715d04efa277bd502d88b5a4.jar"
-        jar="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\exploded-aar\MaterialWidgetLibrary\classes.jar"
+        jar="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/classes.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="b3a2bced7de6fd30906d6bdf924ce529c2c40325"/>
+        sha1="95fd37732ec852e99f07eeb516a3650172f1d136">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/classes-38cb788dd48ed7f2df2f7ffd868f4e1fa7c780a3.jar" />
+    </item>
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\classes-63c7c3e617c0b1a44f904868aa95a94012427521.jar"
-        jar="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\exploded-aar\com.github.markushi\android-ui\1.2\classes.jar"
+        jar="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/exploded-aar/com.afollestad/material-dialogs/0.0.2/classes.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6"/>
+        sha1="3c0123ebce0628f443315f04acd2c4f0cf70fbb6">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/classes-c5cea2642bbf6997d932274c61771c0deccdaf0d.jar" />
+    </item>
     <item
-        dex="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-0ed530d98f9a58af42fd305c1c3e48ead1e175d3.jar"
-        jar="D:\Program Files\android-studio\Android studioProjects\NetworkTrafficMonitor\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
+        jar="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
         jumboMode="false"
         revision="21.0.1"
-        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0"/>
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="/home/dylangao/WorkSpace/android-studio/android-studio/NetworkTrafficMonitor/app/build/intermediates/pre-dexed/debug/classes-3884ed2f149ee62bf002f26db6dd9411cad05606.jar" />
+    </item>
 
-</pre-dex-items>
+</items>

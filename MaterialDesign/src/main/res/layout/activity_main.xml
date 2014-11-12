@@ -42,7 +42,7 @@
     android:layout_marginTop="16dp"
     android:layout_width="wrap_content"
     android:background="#009688"
-    materialdesign:icon="@drawable/ic_reloj_max"
+    materialdesign:iconres="@drawable/ic_reloj_max"
     android:layout_height="wrap_content"/>
 
 <com.gc.materialdesign.views.ButtonFloatSmall 
@@ -50,7 +50,7 @@
     android:layout_marginTop="16dp"
     android:layout_width="wrap_content"
     android:background="#009688"
-    materialdesign:icon="@drawable/ic_reloj_max"
+    materialdesign:iconres="@drawable/ic_reloj_max"
     android:layout_height="wrap_content"/>
 
 <com.gc.materialdesign.views.CheckBox 

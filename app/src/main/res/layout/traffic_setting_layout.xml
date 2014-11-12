@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
@@ -48,7 +49,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15sp" />
-            <Switch
+            <com.gc.materialdesign.views.Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textOn="开"
@@ -97,7 +98,7 @@
                     android:layout_marginLeft="15sp" />
 
             </LinearLayout>
-            <Button
+            <com.gc.materialdesign.views.ButtonFlat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -146,11 +147,15 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true" />
             </RelativeLayout>
-
-            <SeekBar
-                android:layout_width="match_parent"
+            <com.gc.materialdesign.views.Slider
+                android:id="@+id/month_plan_seekbar"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/month_plan_seekbar" />
+                android:layout_centerInParent="true"
+                android:background="#1E88E5"
+                materialdesign:max="50"
+                materialdesign:min="0"
+                materialdesign:showNumberIndicator="true" />
         </LinearLayout>
         <View
             android:layout_width="match_parent"

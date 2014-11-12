@@ -3,10 +3,8 @@ package com.dylangao.networktrafficmonitor.ui;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-
+import com.gc.materialdesign.views.Switch;
+import com.gc.materialdesign.views.ButtonFlat;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.dylangao.networktrafficmonitor.R;
 
@@ -17,14 +15,14 @@ public class TrafficSettingActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.traffic_setting_layout);
         Switch switchButton = (Switch)findViewById(R.id.traffic_monitor_switch);
-        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        switchButton.setOncheckListener(new Switch.OnCheckListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onCheck(boolean check) {
 
             }
         });
 
-        Button monthPlanButton = (Button)findViewById(R.id.month_plan_button);
+        ButtonFlat monthPlanButton = (ButtonFlat)findViewById(R.id.month_plan_button);
         monthPlanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
