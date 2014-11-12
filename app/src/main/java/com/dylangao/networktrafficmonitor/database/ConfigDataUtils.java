@@ -81,6 +81,20 @@ public class ConfigDataUtils {
         return result.equals("") ? "0" : result;
     }
 
+    public static void setMonthlyPlanLimitPercent(int percent, ContentResolver cr) {
+        String value = String.valueOf(percent);
+        setNetworkTrafficConfig(
+                NETWORK_TRAFFIC_MONTHLY_PLAN_LIMIT_PERCENT, value,
+                NETWORK_TRAFFIC_MONTHLY_PLAN_LIMIT_PERCENT_ID, cr);
+    }
+
+    public static String getMonthlyPlanLimitPercent(ContentResolver cr) {
+        String result = getNetworkTrafficConfig(
+                NETWORK_TRAFFIC_MONTHLY_PLAN_LIMIT_PERCENT,
+                NETWORK_TRAFFIC_MONTHLY_PLAN_LIMIT_PERCENT_ID, cr);
+        return result.equals("") ? "0" : result;
+    }
+
     public static String getDateOfToday() {
         long currTime = System.currentTimeMillis();
         Calendar calendar = Calendar.getInstance();
