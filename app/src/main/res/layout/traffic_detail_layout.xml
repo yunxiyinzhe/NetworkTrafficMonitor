@@ -1,54 +1,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="@color/content_background"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_color">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="104dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/tarffic_monitor_title"
-                android:textColor="@color/text"
-                android:textSize="25dp"
-                android:id="@+id/textView" />
-
-        </RelativeLayout>
-
-    </RelativeLayout>
-    <com.material.widget.TabIndicator
-            android:id="@+id/indicator"
-            android:background="@color/primary_color"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
-    <android.support.v4.view.ViewPager
-            android:id="@+id/detail_pager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+    <!-- Your material design style tabs -->
+    <it.neokree.materialtabs.MaterialTabHost
+        android:id="@+id/materialTabHost"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true" >
+    </it.neokree.materialtabs.MaterialTabHost>
+    
 
     <LinearLayout
-        android:background="@color/primary_color"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <!-- Your View Pager for sliding content -->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
         <LinearLayout
             android:background="@color/primary_color"
             android:orientation="horizontal"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5sp"
@@ -59,7 +37,7 @@
                 android:id="@+id/return_button"
                 android:layout_weight="1"
                 android:background="@color/button_background"
-                android:src ="@drawable/ic_backward"/>
+                android:src ="@drawable/ic_add"/>
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

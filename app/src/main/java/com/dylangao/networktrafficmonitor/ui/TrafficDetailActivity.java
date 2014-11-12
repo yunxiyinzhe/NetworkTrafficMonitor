@@ -1,33 +1,59 @@
 package com.dylangao.networktrafficmonitor.ui;
 
-import android.content.ContentResolver;
+
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningServiceInfo;
 
 import com.dylangao.networktrafficmonitor.R;
-import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
 import com.dylangao.networktrafficmonitor.service.MonitorService;
-import com.material.widget.TabIndicator;
-import android.util.Log;
 
-public class TrafficDetailActivity extends FragmentActivity {
+import it.neokree.materialtabs.MaterialTab;
+import it.neokree.materialtabs.MaterialTabHost;
+import it.neokree.materialtabs.MaterialTabListener;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.traffic_detail_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.detail_pager);
-        TrafficDetailPagerAdapter adapter = new TrafficDetailPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
+public class TrafficDetailActivity extends ActionBarActivity implements MaterialTabListener {
+	
+	private ViewPager pager;
+	private ViewPagerAdapter pagerAdapter;
+	MaterialTabHost tabHost;
 
-        TabIndicator indicator = (TabIndicator) findViewById(R.id.indicator);
-        indicator.setViewPager(viewPager);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.traffic_detail_layout);
+
+		tabHost = (MaterialTabHost) this.findViewById(R.id.materialTabHost);
+		pager = (ViewPager) this.findViewById(R.id.viewpager);
+		
+		// init view pager
+		pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+		pager.setAdapter(pagerAdapter);
+		pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+            	// when user do a swipe the selected tab change
+                tabHost.setSelectedNavigationItem(position);
+            }
+        });
+		
+		// insert all tabs from pagerAdapter data
+		for (int i = 0; i < pagerAdapter.getCount(); i++) {
+            tabHost.addTab(
+                    tabHost.newTab() 
+                            .setText(pagerAdapter.getPageTitle(i))
+                            .setTabListener(this)
+                            );
+        }
+
         ImageButton appdetailButton = (ImageButton)findViewById(R.id.app_detail_button);
         appdetailButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,13 +78,13 @@ public class TrafficDetailActivity extends FragmentActivity {
         } else {
             Log.v("MainActivity", "MonitorService is already running");
         }
-        hasSetMonthPlan();
-    }
+		
+	}
 
     private boolean isServiceRunning() {
         ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         Log.v("MainActivity", "MonitorService class name is " + MonitorService.class.getName());
-        for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
             Log.v("MainActivity", "Service name is " + service.service.getClassName());
             if ("com.dylangao.networktrafficmonitor.MonitorService".equals(service.service.getClassName())) {
                 return true;
@@ -68,16 +94,54 @@ public class TrafficDetailActivity extends FragmentActivity {
     }
 
 
-    private void hasSetMonthPlan() {
-        ContentResolver cr = getContentResolver();
-        if(ConfigDataUtils.getMonthlyPlanBytes(cr).equals("0")) {
-           showWarningDialog();
+	@Override
+	public void onTabSelected(MaterialTab tab) {
+		// when the tab is clicked the pager swipe content to the tab position
+		pager.setCurrentItem(tab.getPosition());
+		
+	}
+
+	@Override
+	public void onTabReselected(MaterialTab tab) {
+	}
+
+	@Override
+	public void onTabUnselected(MaterialTab tab) {
+	}
+
+	private class ViewPagerAdapter extends FragmentStatePagerAdapter {
+        protected final String[] TAB_TITLES = new String[]{"月流量统计", "日流量统计"};
+
+        private int mCount = TAB_TITLES.length;
+
+        public ViewPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		public Fragment getItem(int num) {
+            Fragment tab = TrafficDetailFragment.newInstance(R.layout.traffic_detail_tab_layout);
+            Bundle args = new Bundle();
+            if (num == 0) {
+                args.putInt(UIConstants.TAB_TYPE,UIConstants.MONTH_TYPE);
+            }
+            if (num == 1) {
+                args.putInt(UIConstants.TAB_TYPE,UIConstants.DAY_TYPE);
+            }
+            tab.setArguments(args);
+            return tab;
         }
 
+        @Override
+        public int getCount() {
+            return mCount;
+        }
+        
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return TAB_TITLES[position % TAB_TITLES.length];
+
+        }
+        
     }
-
-    private void showWarningDialog() {
-
-    }
-
+	
 }
