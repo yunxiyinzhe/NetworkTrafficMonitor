@@ -2,7 +2,10 @@ package com.dylangao.networktrafficmonitor.ui;
 
 
 import android.app.ActivityManager;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -76,14 +79,15 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
                 startActivity(intent);
             }
         });
+
         if(!isServiceRunning()) {
             Log.v("MainActivity", "MonitorService is not running");
             startService(new Intent(this, MonitorService.class));
         } else {
             Log.v("MainActivity", "MonitorService is already running");
         }
+
         hasSetMonthlyPlan();
-		
 	}
 
     private void hasSetMonthlyPlan() {
@@ -122,7 +126,6 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
         }
         return false;
     }
-
 
 	@Override
 	public void onTabSelected(MaterialTab tab) {

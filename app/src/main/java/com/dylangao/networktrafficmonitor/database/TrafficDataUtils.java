@@ -13,8 +13,8 @@ public class TrafficDataUtils {
     private String mType;
     private int mComputingCycle;
     private ContentResolver mContentResolver;
-    private long initialMobileTrafficBytes;
-    private long initialTotalTrafficBytes;
+    private static long initialMobileTrafficBytes = 0;
+    private static long initialTotalTrafficBytes = 0;
 
     public TrafficDataUtils(String type, int computingCycle, ContentResolver cr) {
         mType = type;
@@ -30,8 +30,8 @@ public class TrafficDataUtils {
         return mComputingCycle;
     }
 
-    public void initialTrafficBytes(boolean isFromBoot) {
-        if (isFromBoot) {
+    public void initialTrafficBytes(boolean flag) {
+        if (flag) {
             initialMobileTrafficBytes = getTrafficData(COLUMNS_MOBILE, mContentResolver);
 
             initialTotalTrafficBytes = getTrafficData(COLUMNS_TOTAL, mContentResolver);
