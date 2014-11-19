@@ -32,7 +32,7 @@ public class TrafficDataUtils {
 
     public void initialTrafficBytes() {
         initialMobileTrafficBytes = getTrafficData(COLUMNS_MOBILE_INIT, mContentResolver);
-        initialTotalTrafficBytes = getTrafficData(COLUMNS_MOBILE_INIT, mContentResolver);
+        initialTotalTrafficBytes = getTrafficData(COLUMNS_TOTAL_INIT, mContentResolver);
 
     }
 
@@ -84,7 +84,7 @@ public class TrafficDataUtils {
         (trafficBytes)[3] = totalBytesBefore;
 
         (trafficBytes)[4] = getTrafficData(COLUMNS_MOBILE_INIT, mContentResolver);
-        (trafficBytes)[5] = getTrafficData(COLUMNS_MOBILE_INIT, mContentResolver);
+        (trafficBytes)[5] = getTrafficData(COLUMNS_TOTAL_INIT, mContentResolver);
 
         setTrafficData(trafficBytes, mContentResolver);
 

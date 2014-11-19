@@ -143,7 +143,7 @@ public class MonitorService extends Service {
 	private void checkNetworkTrafficLimits() {
 		long limitBytesForDay = Long.parseLong(ConfigDataUtils.getLimitBytesForDay(cr));
 		long monthlyPlanBytes = Long.parseLong(ConfigDataUtils.getMonthlyPlanBytes(cr));
-		
+
 		long dayBytes = dailyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE, cr) +
 				dailyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE, cr);
 		long monthBytes = monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE, cr) +
@@ -157,7 +157,7 @@ public class MonitorService extends Service {
 			Log.v("MonitorService","send month alert");
 		}
 	}
-	
+
 	private void restoreData() {
 		Log.v("MonitorService", "Begin to restore Data");
 		dailyTrafficBytesUpload.restoreTrafficBytes();
