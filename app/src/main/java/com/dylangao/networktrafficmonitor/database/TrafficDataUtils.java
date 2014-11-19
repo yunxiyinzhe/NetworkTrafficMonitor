@@ -45,6 +45,7 @@ public class TrafficDataUtils {
         setTrafficData(trafficBytes, mContentResolver);
         initialMobileTrafficBytes = 0;
         initialTotalTrafficBytes = 0;
+        updateInitTrafficData(new long[]{0, 0}, mContentResolver);
     }
 
     public void restoreTrafficBytes() {

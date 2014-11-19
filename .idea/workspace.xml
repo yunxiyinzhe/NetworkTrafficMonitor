@@ -63,11 +63,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7cb1732-782e-4de3-b218-026afe7be0d6" name="Default" comment="one commit before sleep">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/BootReceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/BootReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/DataBaseConstants.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/DataBaseConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/MonitorService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/MonitorService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/TrafficDataUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/TrafficDataUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NetworkTrafficMonitor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrafficDataUtils.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TrafficDataUtils.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/TrafficDataUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="76" max-vertical-offset="3401">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4025974" vertical-offset="467" max-vertical-offset="3420">
+              <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -138,18 +134,18 @@
       <file leaf-file-name="MonitorService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/MonitorService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="551" max-vertical-offset="3192">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3192">
               <caret line="98" column="55" selection-start-line="98" selection-start-column="55" selection-end-line="98" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BootReceiver.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BootReceiver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/BootReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70246476" vertical-offset="418" max-vertical-offset="1463">
-              <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="418" max-vertical-offset="1463">
+              <caret line="42" column="82" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="82" />
               <folding />
             </state>
           </provider>
@@ -2498,9 +2494,9 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/ui/TrafficDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/DataBaseConstants.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/TrafficDataUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/MonitorService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/BootReceiver.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/TrafficDataUtils.java" />
       </list>
     </option>
   </component>
@@ -3445,10 +3441,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/TrafficDataUtils.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/ui/TrafficDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="76" max-vertical-offset="3401">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="553" max-vertical-offset="2831">
+          <caret line="84" column="63" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -3461,18 +3457,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/ui/TrafficDetailActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/BootReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="553" max-vertical-offset="2831">
-          <caret line="84" column="63" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="418" max-vertical-offset="1463">
+          <caret line="42" column="82" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/service/BootReceiver.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dylangao/networktrafficmonitor/database/TrafficDataUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70246476" vertical-offset="418" max-vertical-offset="1463">
-          <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.4025974" vertical-offset="467" max-vertical-offset="3420">
+          <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
           <folding />
         </state>
       </provider>
