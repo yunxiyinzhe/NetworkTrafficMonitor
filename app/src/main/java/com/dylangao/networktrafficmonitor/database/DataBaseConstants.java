@@ -16,6 +16,8 @@ public class DataBaseConstants {
     public static final String COLUMNS_TOTAL = "total";
     public static final String COLUMNS_MOBILE_BEFORE = "mobile_before";
     public static final String COLUMNS_TOTAL_BEFORE = "total_before";
+    public static final String COLUMNS_MOBILE_INIT = "mobile_init";
+    public static final String COLUMNS_TOTAL_INIT = "total_init";
     public static final String NETWORK_TRAFFIC_TYPE_UPLOAD = "upload";
     public static final String NETWORK_TRAFFIC_TYPE_DOWNLOAD = "download";
     public static final String NETWORK_TRAFFIC_CYCLE_TYPE_DAY = "day";
@@ -39,6 +41,10 @@ public class DataBaseConstants {
             + COLUMNS_MOBILE_BEFORE
             + " BIGINT,"
             + COLUMNS_TOTAL_BEFORE
+            + " BIGINT,"
+            + COLUMNS_MOBILE_INIT
+            + " BIGINT,"
+            + COLUMNS_TOTAL_INIT
             + " BIGINT" + ");";
 
     public static final String CREATE_NETWORK_TRAFFIC_FOR_MONTH_TABLE = "CREATE TABLE IF NOT EXISTS "
@@ -55,6 +61,10 @@ public class DataBaseConstants {
             + COLUMNS_MOBILE_BEFORE
             + " BIGINT,"
             + COLUMNS_TOTAL_BEFORE
+            + " BIGINT,"
+            + COLUMNS_MOBILE_INIT
+            + " BIGINT,"
+            + COLUMNS_TOTAL_INIT
             + " BIGINT" + ");";
     public static final String CREATE_NETWORK_TRAFFIC_CONFIG_TABLE = "CREATE TABLE IF NOT EXISTS "
             + NETWORK_TRAFFIC_CONFIG_TABLE_NAME

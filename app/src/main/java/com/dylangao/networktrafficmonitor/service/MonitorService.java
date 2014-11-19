@@ -84,19 +84,19 @@ public class MonitorService extends Service {
 		cr = getContentResolver();
 		dailyTrafficBytesUpload = new TrafficDataUtils(
 				NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_DAY, cr);
-        //dailyTrafficBytesUpload.initialTrafficBytes(isFromBoot);
+        dailyTrafficBytesUpload.initialTrafficBytes();
 
 		dailyTrafficBytesDownload = new TrafficDataUtils(
 				NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_DAY, cr);
-        //dailyTrafficBytesDownload.initialTrafficBytes(isFromBoot);
+        dailyTrafficBytesDownload.initialTrafficBytes();
 
 		monthlyTrafficBytesUpload = new TrafficDataUtils(
 				NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
-        //monthlyTrafficBytesUpload.initialTrafficBytes(isFromBoot);
+        monthlyTrafficBytesUpload.initialTrafficBytes();
 
 		monthlyTrafficBytesDownload = new TrafficDataUtils(
 				NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
-       // monthlyTrafficBytesDownload.initialTrafficBytes(isFromBoot);
+       monthlyTrafficBytesDownload.initialTrafficBytes();
 
 		handler.sendEmptyMessage(STARTMONITOR);
 		checkNetworkTrafficLimits();

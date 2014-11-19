@@ -1,7 +1,5 @@
 package com.dylangao.networktrafficmonitor.service;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -20,23 +18,37 @@ public class BootReceiver extends BroadcastReceiver {
     private ContentResolver cr;
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Intent it = new Intent(context, MonitorService.class);
-		it.putExtra("FromBoot", true);
         cr = context.getContentResolver();
         dailyTrafficBytesUpload = new TrafficDataUtils(
                 NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_DAY, cr);
         dailyTrafficBytesDownload = new TrafficDataUtils(
                 NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_DAY, cr);
-        dailyTrafficBytesUpload.initialTrafficBytes(!isNewDay());
-        dailyTrafficBytesDownload.initialTrafficBytes(!isNewDay());
+
+        if(isNewDay()) {
+            dailyTrafficBytesUpload.updateInitTrafficData(new long[]{0, 0}, cr);
+            dailyTrafficBytesDownload.updateInitTrafficData(new long[]{0, 0}, cr);
+        } else {
+            dailyTrafficBytesUpload.updateInitTrafficData(new long[]{dailyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE, cr),
+                    dailyTrafficBytesUpload.getTrafficData(COLUMNS_TOTAL, cr)}, cr);
+            dailyTrafficBytesDownload.updateInitTrafficData(new long[]{dailyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE, cr),
+                    dailyTrafficBytesDownload.getTrafficData(COLUMNS_TOTAL, cr)}, cr);
+        }
 
         monthlyTrafficBytesUpload = new TrafficDataUtils(
                 NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
         monthlyTrafficBytesDownload = new TrafficDataUtils(
                 NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
-        monthlyTrafficBytesUpload.initialTrafficBytes(!isNewMonth());
-        monthlyTrafficBytesDownload.initialTrafficBytes(!isNewMonth());
 
+        if(isNewMonth()) {
+            monthlyTrafficBytesUpload.updateInitTrafficData(new long[]{0, 0}, cr);
+            monthlyTrafficBytesDownload.updateInitTrafficData(new long[]{0, 0}, cr);
+        } else {
+            monthlyTrafficBytesUpload.updateInitTrafficData(new long[]{monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE, cr),
+                    monthlyTrafficBytesUpload.getTrafficData(COLUMNS_TOTAL, cr)}, cr);
+            monthlyTrafficBytesDownload.updateInitTrafficData(new long[]{monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE, cr),
+                    monthlyTrafficBytesDownload.getTrafficData(COLUMNS_TOTAL, cr)}, cr);
+        }
+        Intent it = new Intent(context, MonitorService.class);
 		context.startService(it);
 	}
 

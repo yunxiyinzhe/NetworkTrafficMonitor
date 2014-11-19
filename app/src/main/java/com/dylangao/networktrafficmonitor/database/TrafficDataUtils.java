@@ -13,8 +13,8 @@ public class TrafficDataUtils {
     private String mType;
     private int mComputingCycle;
     private ContentResolver mContentResolver;
-    private static long initialMobileTrafficBytes = 0;
-    private static long initialTotalTrafficBytes = 0;
+    private long initialMobileTrafficBytes = 0;
+    private long initialTotalTrafficBytes = 0;
 
     public TrafficDataUtils(String type, int computingCycle, ContentResolver cr) {
         mType = type;
@@ -30,15 +30,9 @@ public class TrafficDataUtils {
         return mComputingCycle;
     }
 
-    public void initialTrafficBytes(boolean flag) {
-        if (flag) {
-            initialMobileTrafficBytes = getTrafficData(COLUMNS_MOBILE, mContentResolver);
-
-            initialTotalTrafficBytes = getTrafficData(COLUMNS_TOTAL, mContentResolver);
-        } else {
-            initialMobileTrafficBytes = 0;
-            initialTotalTrafficBytes = 0;
-        }
+    public void initialTrafficBytes() {
+        initialMobileTrafficBytes = getTrafficData(COLUMNS_MOBILE_INIT, mContentResolver);
+        initialTotalTrafficBytes = getTrafficData(COLUMNS_MOBILE_INIT, mContentResolver);
 
     }
 
@@ -170,5 +164,21 @@ public class TrafficDataUtils {
 
         cr.delete(getTableUri(), COLUMNS_TYPE + "=? AND " + COLUMNS_ID + "=?", whereArgs);
         cr.insert(getTableUri(), cv);
+    }
+
+    public void updateInitTrafficData(long[] data, ContentResolver cr) {
+        int type_id;
+        if (mType.equals(NETWORK_TRAFFIC_TYPE_UPLOAD)) {
+            type_id = NETWORK_TRAFFIC_TYPE_UPLOAD_ID;
+        } else {
+            type_id = NETWORK_TRAFFIC_TYPE_DOWNLOAD_ID;
+        }
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMNS_MOBILE_INIT, (data)[0]);
+        cv.put(COLUMNS_TOTAL_INIT, (data)[1]);
+
+        String[] whereArgs = new String[]{mType, String.valueOf(type_id)};
+
+        cr.update(getTableUri(), cv, COLUMNS_TYPE + "=? AND " + COLUMNS_ID + "=?", whereArgs);
     }
 }
