@@ -74,13 +74,6 @@ public class MonitorService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		// TODO Auto-generated method stub
-		if(intent != null) {
-			isFromBoot = intent.getBooleanExtra("FromBoot", false);
-		} else {
-			isFromBoot = false;
-		}
-		Log.v("MonitorService", "MonitorService isFromBoot " + isFromBoot);	
 		cr = getContentResolver();
 		dailyTrafficBytesUpload = new TrafficDataUtils(
 				NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_DAY, cr);
@@ -103,7 +96,7 @@ public class MonitorService extends Service {
 		return super.onStartCommand(intent, flags, startId);
 	}
 
-	
+
 	@Override
 	public void onDestroy() {
 		Log.v("MonitorService", "MonitorService onDestroy");

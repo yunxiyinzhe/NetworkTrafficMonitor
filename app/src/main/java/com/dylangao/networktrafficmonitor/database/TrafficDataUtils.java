@@ -37,19 +37,19 @@ public class TrafficDataUtils {
     }
 
     public void resetTrafficBytes() {
-        long[] trafficBytes = new long[4];
+        long[] trafficBytes = new long[6];
         (trafficBytes)[0] = 0;
         (trafficBytes)[1] = 0;
         (trafficBytes)[2] = getMobileBytes();
         (trafficBytes)[3] = getTotalBytes();
+        (trafficBytes)[4] = 0;
+        (trafficBytes)[5] = 0;
         setTrafficData(trafficBytes, mContentResolver);
-        initialMobileTrafficBytes = 0;
-        initialTotalTrafficBytes = 0;
-        updateInitTrafficData(new long[]{0, 0}, mContentResolver);
+
     }
 
     public void restoreTrafficBytes() {
-        long[] trafficBytes = new long[4];
+        long[] trafficBytes = new long[6];
 
         long mobileBytesSincePowerOn = getMobileBytes();
         long mobileBytesBefore = getTrafficData(COLUMNS_MOBILE_BEFORE, mContentResolver);
@@ -82,6 +82,9 @@ public class TrafficDataUtils {
                 + initialTotalTrafficBytes - totalBytesBefore;
         (trafficBytes)[2] = mobileBytesBefore;
         (trafficBytes)[3] = totalBytesBefore;
+
+        (trafficBytes)[4] = getTrafficData(COLUMNS_MOBILE_INIT, mContentResolver);
+        (trafficBytes)[5] = getTrafficData(COLUMNS_MOBILE_INIT, mContentResolver);
 
         setTrafficData(trafficBytes, mContentResolver);
 
@@ -160,6 +163,8 @@ public class TrafficDataUtils {
         cv.put(COLUMNS_TOTAL, (data)[1]);
         cv.put(COLUMNS_MOBILE_BEFORE, (data)[2]);
         cv.put(COLUMNS_TOTAL_BEFORE, (data)[3]);
+        cv.put(COLUMNS_MOBILE_INIT, (data)[4]);
+        cv.put(COLUMNS_TOTAL_INIT, (data)[5]);
 
         String[] whereArgs = new String[]{mType, String.valueOf(type_id)};
 
