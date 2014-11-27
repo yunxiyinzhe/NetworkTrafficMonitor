@@ -1,6 +1,8 @@
 package com.dylangao.networktrafficmonitor.ui;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.net.TrafficStats;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -70,12 +73,29 @@ public class TrafficAppDetailActivity extends Activity {
             tmpInfo.setAppName(app.loadLabel(getPackageManager()).toString());
             tmpInfo.setAppIcon(app.loadIcon(getPackageManager()));
             tmpInfo.setUid(app.uid);
+            int uploadBytes = (int)(TrafficStats.getUidTxBytes(app.uid)/1024L/1024L);
+            int downloadBytes = (int)(TrafficStats.getUidRxBytes(app.uid)/1024L/1024L);
+            int totalBytes = uploadBytes + downloadBytes;
+            tmpInfo.setUploadBytes(uploadBytes);
+            tmpInfo.setDownloadBytes(downloadBytes);
+            tmpInfo.setTotalBytes(totalBytes);
             appList.add(tmpInfo);
         }
+        Collections.sort(appList, new Comparator<AppInfo>() {
+            @Override
+            public int compare(AppInfo lhs, AppInfo rhs) {
+                int bytes1 = lhs.getTotalBytes();
+                int bytes2 = rhs.getTotalBytes();
+                if(bytes1 < bytes2) {
+                    return 1;
+                }
+                return -1;
+            }
+        });
         return appList;
-    }
+        }
 
-    static class ViewHolder {
+        static class ViewHolder {
         public ImageView appIcon;
         public TextView appName;
         public TextView appDetail;
@@ -120,7 +140,11 @@ public class TrafficAppDetailActivity extends Activity {
 
             holder.appIcon.setImageDrawable(data.get(position).getAppIcon());
             holder.appName.setText((String) data.get(position).getAppName());
-            holder.appDetail.setText(String.valueOf(data.get(position).getUid()));
+            String detail = String.format("上传:%d MB 下载:%d MB 总计:%d MB",
+                    data.get(position).getUploadBytes(),
+                    data.get(position).getDownloadBytes(),
+                    data.get(position).getTotalBytes());
+            holder.appDetail.setText(detail);
 
             return convertView;
         }
@@ -131,6 +155,9 @@ public class TrafficAppDetailActivity extends Activity {
         private String appName="";
         private Drawable appIcon=null;
         private int uid;
+        private int uploadBytes;
+        private int downloadBytes;
+        private int totalBytes;
 
         public void setAppName(String appName) {
             this.appName = appName;
@@ -154,6 +181,30 @@ public class TrafficAppDetailActivity extends Activity {
 
         public int getUid() {
             return uid;
+        }
+
+        public void setUploadBytes(int uploadBytes) {
+            this.uploadBytes = uploadBytes;
+        }
+
+        public int getUploadBytes() {
+            return uploadBytes;
+        }
+
+        public void setDownloadBytes(int downloadBytes) {
+            this.downloadBytes = downloadBytes;
+        }
+
+        public int getDownloadBytes() {
+            return downloadBytes;
+        }
+
+        public void setTotalBytes(int totalBytes) {
+            this.totalBytes = totalBytes;
+        }
+
+        public int getTotalBytes() {
+            return totalBytes;
         }
     }
 }
