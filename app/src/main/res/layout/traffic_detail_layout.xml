@@ -35,7 +35,7 @@
                 android:id="@+id/return_button"
                 android:layout_weight="1"
                 android:background="@color/button_background"
-                android:src ="@drawable/ic_add"/>
+                android:src ="@drawable/ic_menu_back"/>
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

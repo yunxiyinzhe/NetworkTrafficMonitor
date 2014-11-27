@@ -32,39 +32,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_gravity="center_horizontal">
 
-        <RelativeLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5sp"
-            android:layout_marginBottom="5sp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/traffic_monitor_text"
-                android:textSize="20sp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15sp" />
-            <com.gc.materialdesign.views.Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textOn="开"
-                android:textOff="关"
-                android:id="@+id/traffic_monitor_switch"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15sp" />
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/dividers"
-            android:layout_margin="5dp"/>
         <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -240,11 +210,31 @@
                 materialdesign:max="100"
                 materialdesign:min="0"/>
         </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/dividers"
-            android:layout_margin="10dp"/>
     </LinearLayout>
+    <LinearLayout
+        android:background="@color/primary_color"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/return_button"
+            android:layout_weight="1"
+            android:background="@color/button_background"
+            android:src ="@drawable/ic_menu_back"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/app_detail_button"
+            android:layout_weight="1"
+            android:background="@color/button_background"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/setting_button"
+            android:layout_weight="1"
+            android:background="@color/button_background"/>
 
+    </LinearLayout>
 </LinearLayout>

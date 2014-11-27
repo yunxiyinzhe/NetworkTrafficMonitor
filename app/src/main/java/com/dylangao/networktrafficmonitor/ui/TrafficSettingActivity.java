@@ -25,14 +25,6 @@ public class TrafficSettingActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.traffic_setting_layout);
         cr = getContentResolver();
-        Switch switchButton = (Switch)findViewById(R.id.traffic_monitor_switch);
-        switchButton.setOncheckListener(new Switch.OnCheckListener() {
-            @Override
-            public void onCheck(boolean check) {
-
-            }
-        });
-
         ButtonFlat monthPlanButton = (ButtonFlat)findViewById(R.id.month_plan_button);
         monthPlanButton.setOnClickListener(new View.OnClickListener() {
             @Override
