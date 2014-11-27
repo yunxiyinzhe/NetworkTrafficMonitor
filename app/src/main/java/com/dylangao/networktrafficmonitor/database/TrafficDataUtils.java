@@ -45,6 +45,8 @@ public class TrafficDataUtils {
         (trafficBytes)[4] = 0;
         (trafficBytes)[5] = 0;
         setTrafficData(trafficBytes, mContentResolver);
+        initialMobileTrafficBytes = getTrafficData(COLUMNS_MOBILE_INIT, mContentResolver);
+        initialTotalTrafficBytes = getTrafficData(COLUMNS_TOTAL_INIT, mContentResolver);
 
     }
 

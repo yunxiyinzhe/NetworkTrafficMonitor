@@ -28,7 +28,7 @@ import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
 public class TrafficDetailActivity extends ActionBarActivity implements MaterialTabListener {
-	
+
 	private ViewPager pager;
 	private ViewPagerAdapter pagerAdapter;
 	MaterialTabHost tabHost;
@@ -40,7 +40,7 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
 
 		tabHost = (MaterialTabHost) this.findViewById(R.id.materialTabHost);
 		pager = (ViewPager) this.findViewById(R.id.viewpager);
-		
+
 		// init view pager
 		pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 		pager.setAdapter(pagerAdapter);
@@ -51,11 +51,11 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
                 tabHost.setSelectedNavigationItem(position);
             }
         });
-		
+
 		// insert all tabs from pagerAdapter data
 		for (int i = 0; i < pagerAdapter.getCount(); i++) {
             tabHost.addTab(
-                    tabHost.newTab() 
+                    tabHost.newTab()
                             .setText(pagerAdapter.getPageTitle(i))
                             .setTabListener(this)
                             );
@@ -109,9 +109,7 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
                         public void onNegative(MaterialDialog dialog) {
 
                         }
-                    })
-                    .build()
-                    .show();
+                    }).build().show();
         }
     }
 
@@ -131,7 +129,7 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
 	public void onTabSelected(MaterialTab tab) {
 		// when the tab is clicked the pager swipe content to the tab position
 		pager.setCurrentItem(tab.getPosition());
-		
+
 	}
 
 	@Override
@@ -168,13 +166,12 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
         public int getCount() {
             return mCount;
         }
-        
+
         @Override
         public CharSequence getPageTitle(int position) {
             return TAB_TITLES[position % TAB_TITLES.length];
 
         }
-        
     }
-	
+
 }

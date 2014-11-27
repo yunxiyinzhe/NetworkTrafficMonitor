@@ -66,6 +66,7 @@ public class DataBaseConstants {
             + " BIGINT,"
             + COLUMNS_TOTAL_INIT
             + " BIGINT" + ");";
+
     public static final String CREATE_NETWORK_TRAFFIC_CONFIG_TABLE = "CREATE TABLE IF NOT EXISTS "
             + NETWORK_TRAFFIC_CONFIG_TABLE_NAME
             + " ("
