@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
@@ -65,6 +66,14 @@ public class TrafficSettingActivity extends FragmentActivity {
         monthPlanLimitView.setText(Integer.valueOf(ConfigDataUtils.getMonthlyPlanBytes(cr)) *
                 (Integer.valueOf(ConfigDataUtils.getMonthlyPlanLimitPercent(cr))) / 100 +
                 "MB" + " " + ConfigDataUtils.getMonthlyPlanLimitPercent(cr) + "%");
+
+        ImageButton backButton = (ImageButton)findViewById(R.id.return_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TrafficSettingActivity.this.finish();
+            }
+        });
 
     }
     private void showPlanSetDlg(final int type) {

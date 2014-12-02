@@ -22,6 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -53,6 +54,14 @@ public class TrafficAppDetailActivity extends Activity {
                 handler.sendEmptyMessage(0);
             }
         }).start();
+
+        ImageButton backButton = (ImageButton)findViewById(R.id.return_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TrafficAppDetailActivity.this.finish();
+            }
+        });
 
     }
 

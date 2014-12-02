@@ -8,12 +8,17 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.RemoteException;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -32,6 +37,15 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
 	private ViewPager pager;
 	private ViewPagerAdapter pagerAdapter;
 	MaterialTabHost tabHost;
+    boolean isExit;
+
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            isExit = false;
+        }
+    };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +94,14 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
             }
         });
 
+        ImageButton exitButton = (ImageButton)findViewById(R.id.return_button);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exitApp();
+            }
+        });
+
         if(!isServiceRunning()) {
             Log.v("MainActivity", "MonitorService is not running");
             startService(new Intent(this, MonitorService.class));
@@ -89,6 +111,30 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
 
         hasSetMonthlyPlan();
 	}
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitApp();
+            return false;
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
+    }
+
+    public void exitApp(){
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            mHandler.sendEmptyMessageDelayed(0, 2000);
+        } else {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            startActivity(intent);
+            System.exit(0);
+        }
+
+    }
 
     private void hasSetMonthlyPlan() {
         ContentResolver cr = getContentResolver();

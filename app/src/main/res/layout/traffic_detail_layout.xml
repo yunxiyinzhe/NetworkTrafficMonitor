@@ -12,7 +12,7 @@
         android:layout_height="48dp"
         android:layout_alignParentRight="true" >
     </it.neokree.materialtabs.MaterialTabHost>
-    
+
 
     <LinearLayout
         android:orientation="vertical"
