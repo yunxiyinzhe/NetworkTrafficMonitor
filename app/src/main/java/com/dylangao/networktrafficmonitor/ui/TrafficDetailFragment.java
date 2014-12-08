@@ -85,13 +85,15 @@ public class TrafficDetailFragment extends Fragment {
                 NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
         monthlyTrafficBytesDownload = new TrafficDataUtils(
                 NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
-        int used, planed;
+        int used, planed, corrected;
         switch (getArguments().getInt(UIConstants.TAB_TYPE)) {
             case  UIConstants.MONTH_TYPE:
                 bytesLimitTitleView.setText("月流量");
                 used = (int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) +
                         (int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
                 planed = Integer.valueOf(ConfigDataUtils.getMonthlyPlanBytes(cr));
+                corrected = Integer.valueOf(ConfigDataUtils.getMonthlyUsedCorrect(cr)) - used;
+                used = used + corrected;
                 bytesLimitDetail.setText(used + "/" + planed +"(MB)");
                 if(ConfigDataUtils.getMonthlyPlanBytes(cr).equals("0")) {
                     bytesLimitProgressBar.setProgress(0);
@@ -99,10 +101,17 @@ public class TrafficDetailFragment extends Fragment {
                     bytesLimitProgressBar.setProgress(used * 100 / planed);
                 }
 
-
                 moblieDetailTotalBytes.setText(used + "MB");
-                moblieDetailUpBytes.setText((int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
-                moblieDetailDownBytes.setText((int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) + "MB");
+                int fakeUpBytes = (int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
+                int fakeDownBytes = (int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
+                if((fakeDownBytes + corrected) > 0) {
+                    fakeDownBytes = fakeDownBytes + corrected;
+                } else {
+                    fakeUpBytes = fakeUpBytes + fakeDownBytes + corrected;
+                    fakeDownBytes = 0;
+                }
+                moblieDetailUpBytes.setText(fakeUpBytes + "MB");
+                moblieDetailDownBytes.setText(fakeDownBytes + "MB");
 
                 wifiDetailTotalBytes.setText((int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024) +
                         (int)monthlyTrafficBytesDownload.getTrafficData(COLUMNS_TOTAL,cr)/1024/1024 - used + "MB");

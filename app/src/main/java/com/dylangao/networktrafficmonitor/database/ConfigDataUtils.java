@@ -95,6 +95,20 @@ public class ConfigDataUtils {
         return result.equals("") ? "0" : result;
     }
 
+    public static void setMonthlyUsedCorrect(int mbytes, ContentResolver cr) {
+        String value = String.valueOf(mbytes);
+        setNetworkTrafficConfig(
+                NETWORK_TRAFFIC_MONTHLY_USED_CORRECT, value,
+                NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_ID, cr);
+    }
+
+    public static String getMonthlyUsedCorrect(ContentResolver cr) {
+        String result = getNetworkTrafficConfig(
+                NETWORK_TRAFFIC_MONTHLY_USED_CORRECT,
+                NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_ID, cr);
+        return result.equals("") ? "0" : result;
+    }
+
     public static String getDateOfToday() {
         long currTime = System.currentTimeMillis();
         Calendar calendar = Calendar.getInstance();

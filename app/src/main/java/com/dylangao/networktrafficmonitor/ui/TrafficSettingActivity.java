@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
 import com.gc.materialdesign.views.Slider;
-import com.gc.materialdesign.views.Switch;
 import com.gc.materialdesign.views.ButtonFlat;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.dylangao.networktrafficmonitor.R;
@@ -41,6 +40,15 @@ public class TrafficSettingActivity extends FragmentActivity {
                 showPlanSetDlg(UIConstants.DAY_TYPE);
             }
         });
+
+        ButtonFlat monthlyUsedCorrectButton = (ButtonFlat)findViewById(R.id.correct_monthly_used_button);
+        monthlyUsedCorrectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showMonthlyUsedCorrectDlg();
+            }
+        });
+
         monthPlanView = (TextView)findViewById(R.id.month_plan_mb_view);
         dayPlanView = (TextView)findViewById(R.id.day_plan_mb_view);
         monthPlanView.setText(ConfigDataUtils.getMonthlyPlanBytes(cr) + "MB");
@@ -79,7 +87,7 @@ public class TrafficSettingActivity extends FragmentActivity {
     private void showPlanSetDlg(final int type) {
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title((type == UIConstants.MONTH_TYPE ? R.string.monthly_plan_setting_tips : R.string.day_plan_setting_tips))
-                .customView(R.layout.plan_input_dialog)
+                .customView(R.layout.input_dialog)
                 .positiveText(android.R.string.ok)
                 .negativeText(android.R.string.cancel)
                 .callback(new MaterialDialog.Callback() {
@@ -98,6 +106,30 @@ public class TrafficSettingActivity extends FragmentActivity {
                                 dayPlanView.setText(num + "MB");
                             }
                         }
+                    }
+
+                    @Override
+                    public void onNegative(MaterialDialog dialog) {
+                    }
+                }).build();
+        dialog.show();
+    }
+
+    private void showMonthlyUsedCorrectDlg() {
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title( R.string.monthly_used_correct_tips)
+                .customView(R.layout.input_dialog)
+                .positiveText(android.R.string.ok)
+                .negativeText(android.R.string.cancel)
+                .callback(new MaterialDialog.Callback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        EditText et = (EditText) dialog.findViewById(R.id.bytes_num);
+                        if (!et.getText().toString().equals("")) {
+                            int num = Integer.valueOf(et.getText().toString());
+                            ConfigDataUtils.setMonthlyUsedCorrect(num, getContentResolver());
+                        }
+
                     }
 
                     @Override

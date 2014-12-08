@@ -15,4 +15,5 @@
     <string name="monthly_plan_setting_tips">请设置包月流量</string>
     <string name="correct_monthly_used">流量校正</string>
     <string name="day_plan_setting_tips">请设置每日限额</string>
+    <string name="monthly_used_correct_tips">请设置流量校正值</string>
 </resources>

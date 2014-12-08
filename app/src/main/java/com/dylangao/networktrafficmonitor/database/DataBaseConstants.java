@@ -26,6 +26,7 @@ public class DataBaseConstants {
     public static final String NETWORK_TRAFFIC_LIMIT_BYTES_FOR_DAY = "limit_bytes_for_day";
     public static final String NETWORK_TRAFFIC_MONTHLY_PLAN_MBYTES = "monthly_plan_Mbytes";
     public static final String NETWORK_TRAFFIC_MONTHLY_PLAN_LIMIT_PERCENT = "monthly_plan_limit_percent";
+    public static final String NETWORK_TRAFFIC_MONTHLY_USED_CORRECT = "monthly_plan_used_correct";
 
     public static final String CREATE_NETWORK_TRAFFIC_FOR_DAY_TABLE = "CREATE TABLE IF NOT EXISTS "
             + NETWORK_TRAFFIC_FOR_DAY_TABLE_NAME
@@ -99,4 +100,6 @@ public class DataBaseConstants {
     public static final int NETWORK_TRAFFIC_LIMIT_BYTES_FOR_DAY_ID = 2;
     public static final int NETWORK_TRAFFIC_MONTHLY_PLAN_MBYTES_ID = 3;
     public static final int NETWORK_TRAFFIC_MONTHLY_PLAN_LIMIT_PERCENT_ID = 4;
+    public static final int NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_ID = 5;
+
 }
