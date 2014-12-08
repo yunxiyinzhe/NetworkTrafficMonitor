@@ -93,15 +93,22 @@ public class TrafficDetailFragment extends Fragment {
                         (int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
                 planed = Integer.valueOf(ConfigDataUtils.getMonthlyPlanBytes(cr));
                 corrected = Integer.valueOf(ConfigDataUtils.getMonthlyUsedCorrect(cr)) - used;
-                used = used + corrected;
-                bytesLimitDetail.setText(used + "/" + planed +"(MB)");
+                int correctedUsed = used + corrected;
+                bytesLimitDetail.setText(correctedUsed + "/" + planed +"(MB)");
                 if(ConfigDataUtils.getMonthlyPlanBytes(cr).equals("0")) {
                     bytesLimitProgressBar.setProgress(0);
                 } else {
-                    bytesLimitProgressBar.setProgress(used * 100 / planed);
+                    int progress = correctedUsed * 100 / planed;
+                    if(progress > 100) {
+                        progress = 100;
+                        bytesLimitProgressBar.setTextColor(getResources().getColor(R.color.material_pink_500));
+                    } else {
+                        bytesLimitProgressBar.setTextColor(getResources().getColor(R.color.primary_color));
+                    }
+                    bytesLimitProgressBar.setProgress(progress);
                 }
 
-                moblieDetailTotalBytes.setText(used + "MB");
+                moblieDetailTotalBytes.setText(correctedUsed + "MB");
                 int fakeUpBytes = (int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
                 int fakeDownBytes = (int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
                 if((fakeDownBytes + corrected) > 0) {
@@ -129,7 +136,14 @@ public class TrafficDetailFragment extends Fragment {
                 if(ConfigDataUtils.getLimitBytesForDay(cr).equals("0")) {
                     bytesLimitProgressBar.setProgress(0);
                 } else {
-                    bytesLimitProgressBar.setProgress(used * 100 / planed);
+                    int progress = used * 100 / planed;
+                    if(progress > 100) {
+                        progress = 100;
+                        bytesLimitProgressBar.setTextColor(getResources().getColor(R.color.material_pink_500));
+                    } else {
+                        bytesLimitProgressBar.setTextColor(getResources().getColor(R.color.primary_color));
+                    }
+                    bytesLimitProgressBar.setProgress(progress);
                 }
 
                 moblieDetailTotalBytes.setText(used + "MB");
