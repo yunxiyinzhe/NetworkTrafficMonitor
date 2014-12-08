@@ -210,15 +210,14 @@
                     android:layout_alignParentRight="true"
                     android:textColor="@color/secondary"/>
             </RelativeLayout>
-            <com.gc.materialdesign.views.Slider
+            <SeekBar
                 android:id="@+id/month_plan_slider"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="#1E88E5"
-                materialdesign:max="100"
-                materialdesign:min="0"/>
+                android:layout_centerInParent="true"/>
         </LinearLayout>
+
+
     </LinearLayout>
     <LinearLayout
         android:background="@color/primary_color"

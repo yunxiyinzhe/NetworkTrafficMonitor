@@ -6,10 +6,10 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
-import com.gc.materialdesign.views.Slider;
 import com.gc.materialdesign.views.ButtonFlat;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.dylangao.networktrafficmonitor.R;
@@ -18,7 +18,7 @@ public class TrafficSettingActivity extends FragmentActivity {
     private  ContentResolver cr;
     private TextView monthPlanView;
     private TextView dayPlanView;
-    private Slider percentSlider;
+    private SeekBar percentSlider;
     private  TextView monthPlanLimitView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,21 +54,6 @@ public class TrafficSettingActivity extends FragmentActivity {
         monthPlanView.setText(ConfigDataUtils.getMonthlyPlanBytes(cr) + "MB");
         dayPlanView.setText(ConfigDataUtils.getLimitBytesForDay(cr) + "MB");
 
-        percentSlider = (Slider)findViewById(R.id.month_plan_slider);
-        percentSlider.setOnValueChangedListener(new Slider.OnValueChangedListener(){
-            @Override
-            public void onValueChanged(int value) {
-                ConfigDataUtils.setMonthlyPlanLimitPercent(value, cr);
-                monthPlanLimitView.setText(Integer.valueOf(ConfigDataUtils.getMonthlyPlanBytes(cr)) *
-                        value / 100 + "MB" + " " + value + "%");
-            }
-        });
-
-        if(ConfigDataUtils.getMonthlyPlanBytes(cr).equals("0")) {
-            percentSlider.setActivated(false);
-        } else {
-            percentSlider.setValue(Integer.valueOf(ConfigDataUtils.getMonthlyPlanLimitPercent(cr)));
-        }
 
         monthPlanLimitView = (TextView)findViewById(R.id.month_plan_limit_mb);
         monthPlanLimitView.setText(Integer.valueOf(ConfigDataUtils.getMonthlyPlanBytes(cr)) *
@@ -80,6 +65,32 @@ public class TrafficSettingActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 TrafficSettingActivity.this.finish();
+            }
+        });
+
+        percentSlider = (SeekBar)findViewById(R.id.month_plan_slider);
+        if(ConfigDataUtils.getMonthlyPlanBytes(cr).equals("0")) {
+            percentSlider.setActivated(false);
+        } else {
+            percentSlider.setProgress(Integer.valueOf(ConfigDataUtils.getMonthlyPlanLimitPercent(cr)));
+        }
+
+        percentSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                ConfigDataUtils.setMonthlyPlanLimitPercent(progress, cr);
+                monthPlanLimitView.setText(Integer.valueOf(ConfigDataUtils.getMonthlyPlanBytes(cr)) *
+                        progress / 100 + "MB" + " " + progress + "%");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
