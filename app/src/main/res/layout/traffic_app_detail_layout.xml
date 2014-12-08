@@ -22,7 +22,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/app_detail_title"
                 android:textColor="#FFF"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_detail_tips"
         android:layout_gravity="center_vertical"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/text"
         android:layout_marginLeft="5sp"
         android:layout_marginTop="10sp"
@@ -56,25 +56,37 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageButton
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/return_button"
-            android:layout_weight="1"
-            android:background="@color/button_background"
-            android:src ="@drawable/ic_menu_back"/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/app_detail_button"
-            android:layout_weight="1"
-            android:background="@color/button_background"/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/setting_button"
-            android:layout_weight="1"
-            android:background="@color/button_background"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/return_button"
+                android:layout_weight="1"
+                android:background="@color/button_background"
+                android:src ="@drawable/ic_menu_back"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/app_detail_button"
+                android:layout_weight="1"
+                android:background="@color/button_background"
+                android:src ="@drawable/ic_menu_back"
+                android:visibility="invisible" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/setting_button"
+                android:layout_weight="1"
+                android:background="@color/button_background"
+                android:src ="@drawable/ic_menu_back"
+                android:visibility="invisible" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

@@ -13,7 +13,6 @@
         android:layout_alignParentRight="true" >
     </it.neokree.materialtabs.MaterialTabHost>
 
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -29,27 +28,35 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <ImageButton
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/return_button"
-                android:layout_weight="1"
-                android:background="@color/button_background"
-                android:src ="@drawable/ic_menu_back"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/app_detail_button"
-                android:layout_weight="1"
-                android:background="@color/button_background"
-                android:src ="@drawable/ic_menu_appinfo"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/setting_button"
-                android:layout_weight="1"
-                android:background="@color/button_background"
-                android:src ="@drawable/ic_menu_settings"/>
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/return_button"
+                    android:layout_weight="1"
+                    android:background="@color/button_background"
+                    android:src ="@drawable/ic_menu_back"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/app_detail_button"
+                    android:layout_weight="1"
+                    android:background="@color/button_background"
+                    android:src ="@drawable/ic_menu_appinfo"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/setting_button"
+                    android:layout_weight="1"
+                    android:background="@color/button_background"
+                    android:src ="@drawable/ic_menu_settings"/>
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
