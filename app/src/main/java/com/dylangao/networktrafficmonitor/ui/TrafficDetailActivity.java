@@ -53,6 +53,7 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
 		setContentView(R.layout.traffic_detail_layout);
 
 		tabHost = (MaterialTabHost) this.findViewById(R.id.materialTabHost);
+        tabHost.setPrimaryColor(getResources().getColor(R.color.primary_color));
 		pager = (ViewPager) this.findViewById(R.id.viewpager);
 
 		// init view pager

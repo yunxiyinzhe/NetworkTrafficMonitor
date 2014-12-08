@@ -5,19 +5,28 @@
               android:orientation="vertical"
               android:gravity="center"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@color/background_material_light">
+
+    <com.github.lzyzsd.circleprogress.CircleProgress
+        android:id="@+id/bytes_limit_progressBar"
+        android:adjustViewBounds="true"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="15dp" />
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
             android:id="@+id/bytes_limit_title"
             android:layout_marginLeft="10dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="@color/text"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,16 +34,8 @@
             android:id="@+id/bytes_limit_detail"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:textSize="20sp" />
-
-        <com.gc.materialdesign.views.ProgressBarDetermininate
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bytes_limit_progressBar"
-            android:indeterminate="false"
-            android:layout_marginRight="15sp" />
-
+            android:textSize="20sp"
+            android:textColor="@color/text"/>
     </LinearLayout>
 
     <View

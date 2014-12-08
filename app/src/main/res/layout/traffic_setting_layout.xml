@@ -3,7 +3,8 @@
     xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@color/background_material_light">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,9 +23,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text="@string/setting_title"
-                android:textColor="@color/text"
+                android:textColor="#FFF"
                 android:textSize="25sp"
-                android:id="@+id/setting_title_view" />
+                android:id="@+id/setting_title_view"
+                android:layout_marginBottom="15dp" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -57,14 +59,16 @@
                     android:layout_height="wrap_content"
                     android:text="@string/month_plan_text"
                     android:textSize="20sp"
-                    android:layout_marginLeft="15sp" />
+                    android:layout_marginLeft="15sp"
+                    android:textColor="@color/text"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
                     android:layout_marginTop="5sp"
                     android:id="@+id/month_plan_mb_view"
-                    android:layout_marginLeft="15sp" />
+                    android:layout_marginLeft="15sp"
+                    android:textColor="@color/secondary"/>
 
             </LinearLayout>
             <com.gc.materialdesign.views.ButtonFlat
@@ -103,14 +107,16 @@
                     android:layout_height="wrap_content"
                     android:text="@string/day_plan_text"
                     android:textSize="20sp"
-                    android:layout_marginLeft="15sp" />
+                    android:layout_marginLeft="15sp"
+                    android:textColor="@color/text"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
                     android:layout_marginTop="5sp"
                     android:id="@+id/day_plan_mb_view"
-                    android:layout_marginLeft="15sp" />
+                    android:layout_marginLeft="15sp"
+                    android:textColor="@color/secondary"/>
 
             </LinearLayout>
             <com.gc.materialdesign.views.ButtonFlat
@@ -149,7 +155,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/correct_monthly_used"
                     android:textSize="20sp"
-                    android:layout_marginLeft="15sp" />
+                    android:layout_marginLeft="15sp"
+                    android:textColor="@color/text"/>
 
             </LinearLayout>
             <com.gc.materialdesign.views.ButtonFlat
@@ -192,14 +199,16 @@
                     android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/text"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:id="@+id/month_plan_limit_mb"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/secondary"/>
             </RelativeLayout>
             <com.gc.materialdesign.views.Slider
                 android:id="@+id/month_plan_slider"
@@ -228,13 +237,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/app_detail_button"
             android:layout_weight="1"
-            android:background="@color/button_background"/>
+            android:background="@color/button_background"
+            android:src ="@drawable/ic_menu_back"
+            android:visibility="invisible" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/setting_button"
             android:layout_weight="1"
-            android:background="@color/button_background"/>
+            android:background="@color/button_background"
+            android:src ="@drawable/ic_menu_back"
+            android:visibility="invisible" />
 
     </LinearLayout>
 </LinearLayout>

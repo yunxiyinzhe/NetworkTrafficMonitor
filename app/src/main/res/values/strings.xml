@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TrafficMonitor</string>
+    <string name="app_name">囧流量</string>
     <string name="app_description">An app used to monitor network traffic</string>
     <string name="tarffic_monitor_title">流量管理</string>
     <string name="setting_title">设置</string>

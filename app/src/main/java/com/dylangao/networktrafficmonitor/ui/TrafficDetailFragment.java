@@ -12,6 +12,7 @@ import com.gc.materialdesign.views.ProgressBarDetermininate;
 import com.dylangao.networktrafficmonitor.R;
 import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
 import com.dylangao.networktrafficmonitor.database.TrafficDataUtils;
+import com.github.lzyzsd.circleprogress.CircleProgress;
 
 import static com.dylangao.networktrafficmonitor.database.DataBaseConstants.*;
 
@@ -26,7 +27,7 @@ public class TrafficDetailFragment extends Fragment {
 
     private TextView bytesLimitTitleView;
     private TextView bytesLimitDetail;
-    private ProgressBarDetermininate bytesLimitProgressBar;
+    private CircleProgress bytesLimitProgressBar;
 
     private TextView moblieDetailTitle;
     private TextView moblieDetailTotalBytes;
@@ -56,7 +57,7 @@ public class TrafficDetailFragment extends Fragment {
         cr = getActivity().getContentResolver();
 
         bytesLimitDetail = (TextView)tab.findViewById(R.id.bytes_limit_detail);
-        bytesLimitProgressBar = (ProgressBarDetermininate)tab.findViewById(R.id.bytes_limit_progressBar);
+        bytesLimitProgressBar = (CircleProgress)tab.findViewById(R.id.bytes_limit_progressBar);
         bytesLimitProgressBar.setMax(100);
 
         moblieDetailTitle = (TextView)tab.findViewById(R.id.moblie_detail_card).findViewById(R.id.detail_title);
