@@ -10,9 +10,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
+import com.dylangao.networktrafficmonitor.database.TrafficDataUtils;
 import com.gc.materialdesign.views.ButtonFlat;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.dylangao.networktrafficmonitor.R;
+
+import static com.dylangao.networktrafficmonitor.database.DataBaseConstants.*;
 
 public class TrafficSettingActivity extends FragmentActivity {
     private  ContentResolver cr;
@@ -138,7 +141,22 @@ public class TrafficSettingActivity extends FragmentActivity {
                         EditText et = (EditText) dialog.findViewById(R.id.bytes_num);
                         if (!et.getText().toString().equals("")) {
                             int num = Integer.valueOf(et.getText().toString());
-                            ConfigDataUtils.setMonthlyUsedCorrect(num, getContentResolver());
+                            TrafficDataUtils monthlyTrafficBytesUpload = new TrafficDataUtils(
+                                    NETWORK_TRAFFIC_TYPE_UPLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
+                            TrafficDataUtils monthlyTrafficBytesDownload = new TrafficDataUtils(
+                                    NETWORK_TRAFFIC_TYPE_DOWNLOAD, URI_TYPE_NETWORK_TRAFFIC_FOR_MONTH, cr);
+                            int usedUpload = (int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
+                            int usedDownload = (int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
+                            int correctUpload, correctDownload;
+                            correctDownload = num -usedDownload -usedUpload;
+                            if( (usedDownload + correctDownload) > 0 ) {
+                                correctUpload = 0;
+                            } else {
+                                correctUpload = correctDownload + usedDownload;
+                                correctDownload = -usedDownload;
+                            }
+                            ConfigDataUtils.setMonthlyUsedCorrect(correctDownload, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_DOWNLOAD_ID, getContentResolver());
+                            ConfigDataUtils.setMonthlyUsedCorrect(correctUpload, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_UPLOAD_ID, getContentResolver());
                         }
 
                     }

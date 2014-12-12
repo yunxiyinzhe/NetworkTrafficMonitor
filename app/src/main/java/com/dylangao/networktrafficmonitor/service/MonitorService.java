@@ -112,7 +112,8 @@ public class MonitorService extends Service {
 		Log.v("MonitorService", "handleNewMonth");
 		monthlyTrafficBytesUpload.resetTrafficBytes();
 		monthlyTrafficBytesDownload.resetTrafficBytes();
-        ConfigDataUtils.setMonthlyUsedCorrect(0, getContentResolver());
+        ConfigDataUtils.setMonthlyUsedCorrect(0, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_DOWNLOAD_ID, getContentResolver());
+        ConfigDataUtils.setMonthlyUsedCorrect(0, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_UPLOAD_ID, getContentResolver());
 	}
 
 	private boolean isNewDay() {

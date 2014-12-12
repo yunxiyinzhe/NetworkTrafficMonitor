@@ -100,6 +100,6 @@ public class DataBaseConstants {
     public static final int NETWORK_TRAFFIC_LIMIT_BYTES_FOR_DAY_ID = 2;
     public static final int NETWORK_TRAFFIC_MONTHLY_PLAN_MBYTES_ID = 3;
     public static final int NETWORK_TRAFFIC_MONTHLY_PLAN_LIMIT_PERCENT_ID = 4;
-    public static final int NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_ID = 5;
-
+    public static final int NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_DOWNLOAD_ID = 5;
+    public static final int NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_UPLOAD_ID = 5;
 }
