@@ -95,16 +95,16 @@ public class ConfigDataUtils {
         return result.equals("") ? "0" : result;
     }
 
-    public static void setMonthlyUsedCorrect(int mbytes, int id, ContentResolver cr) {
+    public static void setMonthlyUsedCorrect(int mbytes, String key, int id, ContentResolver cr) {
         String value = String.valueOf(mbytes);
         setNetworkTrafficConfig(
-                NETWORK_TRAFFIC_MONTHLY_USED_CORRECT, value,
+                key, value,
                 id, cr);
     }
 
-    public static String getMonthlyUsedCorrect(int id, ContentResolver cr) {
+    public static String getMonthlyUsedCorrect(String key, int id, ContentResolver cr) {
         String result = getNetworkTrafficConfig(
-                NETWORK_TRAFFIC_MONTHLY_USED_CORRECT,
+                key,
                 id, cr);
         return result.equals("") ? "0" : result;
     }

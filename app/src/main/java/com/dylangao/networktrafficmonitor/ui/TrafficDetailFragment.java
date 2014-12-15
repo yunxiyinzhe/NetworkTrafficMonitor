@@ -92,8 +92,8 @@ public class TrafficDetailFragment extends Fragment {
                 used = (int)(monthlyTrafficBytesUpload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024) +
                         (int)(monthlyTrafficBytesDownload.getTrafficData(COLUMNS_MOBILE,cr)/1024/1024);
                 planed = Integer.valueOf(ConfigDataUtils.getMonthlyPlanBytes(cr));
-                correctedUp = Integer.valueOf(ConfigDataUtils.getMonthlyUsedCorrect(NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_UPLOAD_ID,cr));
-                correctedDown = Integer.valueOf(ConfigDataUtils.getMonthlyUsedCorrect(NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_DOWNLOAD_ID,cr));
+                correctedUp = Integer.valueOf(ConfigDataUtils.getMonthlyUsedCorrect(NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_UPLOAD, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_UPLOAD_ID,cr));
+                correctedDown = Integer.valueOf(ConfigDataUtils.getMonthlyUsedCorrect(NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_DOWNLOAD, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_DOWNLOAD_ID,cr));
                 int correctedUsed = used + correctedUp + correctedDown;
                 bytesLimitDetail.setText(correctedUsed + "/" + planed +"(MB)");
                 if(ConfigDataUtils.getMonthlyPlanBytes(cr).equals("0")) {

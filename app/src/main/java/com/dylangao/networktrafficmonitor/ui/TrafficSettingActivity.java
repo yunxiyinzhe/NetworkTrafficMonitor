@@ -155,8 +155,8 @@ public class TrafficSettingActivity extends FragmentActivity {
                                 correctUpload = correctDownload + usedDownload;
                                 correctDownload = -usedDownload;
                             }
-                            ConfigDataUtils.setMonthlyUsedCorrect(correctDownload, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_DOWNLOAD_ID, getContentResolver());
-                            ConfigDataUtils.setMonthlyUsedCorrect(correctUpload, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_UPLOAD_ID, getContentResolver());
+                            ConfigDataUtils.setMonthlyUsedCorrect(correctDownload, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_DOWNLOAD, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_DOWNLOAD_ID, getContentResolver());
+                            ConfigDataUtils.setMonthlyUsedCorrect(correctUpload, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_UPLOAD, NETWORK_TRAFFIC_MONTHLY_USED_CORRECT_UPLOAD_ID, getContentResolver());
                         }
 
                     }
