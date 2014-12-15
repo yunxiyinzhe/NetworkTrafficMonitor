@@ -168,6 +168,9 @@ public class MonitorService extends Service {
 		monthlyTrafficBytesDownload.restoreTrafficBytes();
 
 		ConfigDataUtils.setLastRecordTime(cr);
+        Intent intent = new Intent();
+        intent.setAction("com.dylangao.updateUI");
+        sendBroadcast(intent);
 	}
 
 	@Override

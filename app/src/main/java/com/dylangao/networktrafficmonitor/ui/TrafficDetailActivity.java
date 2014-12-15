@@ -4,9 +4,11 @@ package com.dylangao.networktrafficmonitor.ui;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,6 +29,10 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.dylangao.networktrafficmonitor.R;
 import com.dylangao.networktrafficmonitor.database.ConfigDataUtils;
 import com.dylangao.networktrafficmonitor.service.MonitorService;
+import static com.dylangao.networktrafficmonitor.ui.UIConstants.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
@@ -36,8 +42,10 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
 
 	private ViewPager pager;
 	private ViewPagerAdapter pagerAdapter;
-	MaterialTabHost tabHost;
-    boolean isExit;
+    private MaterialTabHost tabHost;
+    private int currentFragmentID = 0;
+    private UpdateUIReceiver receiver;
+    private boolean isExit;
 
     Handler mHandler = new Handler() {
         @Override
@@ -63,7 +71,10 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
             @Override
             public void onPageSelected(int position) {
             	// when user do a swipe the selected tab change
+                Log.v("TrafficDetailActivity","onPageSelected");
                 tabHost.setSelectedNavigationItem(position);
+                currentFragmentID = position;
+                ((TrafficDetailFragment)pagerAdapter.getTabs().get(currentFragmentID)).updateViews();
             }
         });
 
@@ -111,7 +122,13 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
         }
 
         hasSetMonthlyPlan();
-	}
+        //订阅广播Intent
+        receiver = new UpdateUIReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(UI_UPDATE_BOARDCAST);
+        registerReceiver(receiver, filter);
+
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -175,8 +192,8 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
 	@Override
 	public void onTabSelected(MaterialTab tab) {
 		// when the tab is clicked the pager swipe content to the tab position
+        Log.v("TrafficDetailActivity","onTabSelected");
 		pager.setCurrentItem(tab.getPosition());
-
 	}
 
 	@Override
@@ -192,12 +209,21 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
 
         private int mCount = TAB_TITLES.length;
 
+        private List<Fragment> tabs = new ArrayList<Fragment>();
+
+        public List<Fragment> getTabs() {
+            return  tabs;
+        }
+
         public ViewPagerAdapter(FragmentManager fm) {
 			super(fm);
 		}
 
+        @Override
 		public Fragment getItem(int num) {
-            Fragment tab = TrafficDetailFragment.newInstance(R.layout.traffic_detail_tab_layout);
+            Log.v("TrafficDetailActivity","ViewPagerAdapter getItem");
+            //Fragment tab = TrafficDetailFragment.newInstance(R.layout.traffic_detail_tab_layout);
+            tabs.add(num, TrafficDetailFragment.newInstance(R.layout.traffic_detail_tab_layout));
             Bundle args = new Bundle();
             if (num == 0) {
                 args.putInt(UIConstants.TAB_TYPE,UIConstants.MONTH_TYPE);
@@ -205,8 +231,8 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
             if (num == 1) {
                 args.putInt(UIConstants.TAB_TYPE,UIConstants.DAY_TYPE);
             }
-            tab.setArguments(args);
-            return tab;
+            tabs.get(num).setArguments(args);
+            return tabs.get(num);
         }
 
         @Override
@@ -218,6 +244,17 @@ public class TrafficDetailActivity extends ActionBarActivity implements Material
         public CharSequence getPageTitle(int position) {
             return TAB_TITLES[position % TAB_TITLES.length];
 
+        }
+    }
+
+    public class UpdateUIReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(!pagerAdapter.getTabs().isEmpty()) {
+                Log.v("TrafficDetailActivity","Update UI currentFragmentID is" + currentFragmentID);
+                ((TrafficDetailFragment)pagerAdapter.getTabs().get(currentFragmentID)).updateViews();
+            }
         }
     }
 

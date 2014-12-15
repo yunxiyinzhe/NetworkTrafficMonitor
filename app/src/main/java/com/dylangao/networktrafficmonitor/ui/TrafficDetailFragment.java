@@ -73,7 +73,7 @@ public class TrafficDetailFragment extends Fragment {
         return tab;
     }
 
-    private void updateViews( ) {
+    public void updateViews( ) {
         moblieDetailTitle.setText("移动数据");
         wifiDetailTitle.setText("无线连接");
 
